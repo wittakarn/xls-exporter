@@ -5,6 +5,7 @@
  */
 package com.thaisoftplus.main;
 
+import com.thaisoftplus.business.WordCheckerBusiness;
 import com.thsisoftplus.string.StringMatcher;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +52,9 @@ public class Export {
     public static void main(String[] args){
         crateMockData();
         List<String> Matching = StringMatcher.getMatchString(original, compare);
+        
+        WordCheckerBusiness business = new WordCheckerBusiness();
+        business.listAllData();
         
         System.out.println(Matching.toString());
     }
