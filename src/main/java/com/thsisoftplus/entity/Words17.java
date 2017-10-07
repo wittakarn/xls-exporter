@@ -5,6 +5,7 @@
  */
 package com.thsisoftplus.entity;
 
+import com.thaisoftplus.word.OriginalWord;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -32,7 +33,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Words17.findByWording", query = "SELECT w FROM Words17 w WHERE w.wording = :wording"),
     @NamedQuery(name = "Words17.findByCorrect", query = "SELECT w FROM Words17 w WHERE w.correct = :correct"),
     @NamedQuery(name = "Words17.findByTimestamp", query = "SELECT w FROM Words17 w WHERE w.timestamp = :timestamp")})
-public class Words17 implements Serializable {
+public class Words17 implements OriginalWord, Serializable {
 
     private static final long serialVersionUID = 1L;
     @EmbeddedId
