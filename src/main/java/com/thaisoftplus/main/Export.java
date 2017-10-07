@@ -7,9 +7,9 @@ package com.thaisoftplus.main;
 
 import com.thaisoftplus.business.WordCheckerBusiness;
 import com.thaisoftplus.xls.exporter.XlsExport;
+import com.thsisoftplus.domain.XlsRowAlphabet17;
 import com.thsisoftplus.domain.XlsRowGoverment;
 import com.thsisoftplus.domain.XlsRowItqxbmp;
-import com.thsisoftplus.string.StringMatcher;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,5 +64,13 @@ public class Export {
         
         List<XlsRowItqxbmp> xlsRowItqxbmpAlphabets17 = business.listAllAlphabets17DataForItqxbmp();
         XlsExport.createItqxbmp("D:/temp/Alphabets17Itqxbmp.xlsx", "Interval time ipqxbmp", xlsRowItqxbmpAlphabets17);
+        
+        try{
+            List<XlsRowAlphabet17> xlsRowAlphabet17 = business.listAllAlphabets17Word();
+            XlsExport.createAlphabets17("D:/temp/Alphabets17Word.xlsx", "Elapsed time of alphabets17", xlsRowAlphabet17);
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        
     }
 }
