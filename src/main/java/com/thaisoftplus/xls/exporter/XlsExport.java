@@ -5,7 +5,7 @@
  */
 package com.thaisoftplus.xls.exporter;
 
-import com.thsisoftplus.domain.XlsRowAlphabet17;
+import com.thsisoftplus.domain.XlsRowWord;
 import com.thsisoftplus.domain.XlsRowGoverment;
 import com.thsisoftplus.domain.XlsRowItqxbmp;
 import java.io.FileNotFoundException;
@@ -176,14 +176,14 @@ public class XlsExport {
         System.out.println("Done");
     }
     
-    public static void createAlphabets17(String fileName, String sheetName, List<XlsRowAlphabet17> datas){
+    public static void createAlphabets17(String fileName, String sheetName, List<XlsRowWord> datas){
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFSheet sheet = workbook.createSheet(sheetName);
         
         int rowNum = 0;
         System.out.println("Creating excel");
 
-        for (XlsRowAlphabet17 data : datas) {
+        for (XlsRowWord data : datas) {
             Row row = sheet.createRow(rowNum++);
             int colNum = 0;
             
@@ -246,6 +246,61 @@ public class XlsExport {
             
             cell = row.createCell(colNum++);
             cell.setCellValue(data.getWord17Time());
+        }
+
+        try {
+            FileOutputStream outputStream = new FileOutputStream(fileName);
+            workbook.write(outputStream);
+            workbook.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("Done");
+    }
+    
+    public static void createFlAlphabets(String fileName, String sheetName, List<XlsRowWord> datas){
+        XSSFWorkbook workbook = new XSSFWorkbook();
+        XSSFSheet sheet = workbook.createSheet(sheetName);
+        
+        int rowNum = 0;
+        System.out.println("Creating excel");
+
+        for (XlsRowWord data : datas) {
+            Row row = sheet.createRow(rowNum++);
+            int colNum = 0;
+            
+            Cell cell = row.createCell(colNum++);
+            cell.setCellValue(data.getEmail());
+            
+            cell = row.createCell(colNum++);
+            cell.setCellValue(data.getId());
+            
+            cell = row.createCell(colNum++);
+            cell.setCellValue(data.getRound());
+            
+            cell = row.createCell(colNum++);
+            cell.setCellValue(data.getWord1Time());
+            
+            cell = row.createCell(colNum++);
+            cell.setCellValue(data.getWord2Time());
+            
+            cell = row.createCell(colNum++);
+            cell.setCellValue(data.getWord3Time());
+            
+            cell = row.createCell(colNum++);
+            cell.setCellValue(data.getWord4Time());
+            
+            cell = row.createCell(colNum++);
+            cell.setCellValue(data.getWord5Time());
+            
+            cell = row.createCell(colNum++);
+            cell.setCellValue(data.getWord6Time());
+            
+            cell = row.createCell(colNum++);
+            cell.setCellValue(data.getWord7Time());
         }
 
         try {

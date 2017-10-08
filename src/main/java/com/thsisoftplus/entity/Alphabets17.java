@@ -5,6 +5,7 @@
  */
 package com.thsisoftplus.entity;
 
+import com.thaisoftplus.word.OriginalAlphabet;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -36,7 +37,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Alphabets17.findByKeyUp", query = "SELECT a FROM Alphabets17 a WHERE a.keyUp = :keyUp"),
     @NamedQuery(name = "Alphabets17.findByCorrect", query = "SELECT a FROM Alphabets17 a WHERE a.correct = :correct"),
     @NamedQuery(name = "Alphabets17.findByTimestamp", query = "SELECT a FROM Alphabets17 a WHERE a.timestamp = :timestamp")})
-public class Alphabets17 implements Serializable {
+public class Alphabets17 implements OriginalAlphabet, Serializable {
 
     private static final long serialVersionUID = 1L;
     @EmbeddedId

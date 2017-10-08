@@ -9,7 +9,7 @@ package com.thsisoftplus.domain;
  *
  * @author witta
  */
-public class XlsRowAlphabet17 extends XlsRow {
+public class XlsRowWord extends XlsRow {
 
     private long word1Time;
     private long word2Time;

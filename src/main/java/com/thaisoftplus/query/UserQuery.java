@@ -26,8 +26,6 @@ public class UserQuery {
 
             query = em.createQuery(sb.toString());
 
-            System.out.println("Query = " + sb.toString());
-
             return query.getResultList();
         } finally {
             sb = null;

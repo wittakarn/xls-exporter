@@ -26,8 +26,6 @@ public class CwAlphabetsQuery {
 
             query = em.createQuery(sb.toString());
             query.setParameter("id", id);
-            
-            System.out.println("Query = " + sb.toString());
 
             return query.getResultList();
         } finally {

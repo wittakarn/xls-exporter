@@ -7,20 +7,22 @@ package com.thaisoftplus.business;
 
 import com.thaisoftplus.query.Alphabets17Query;
 import com.thaisoftplus.query.CwAlphabetsQuery;
+import com.thaisoftplus.query.FlAlphabetsQuery;
 import com.thaisoftplus.query.UserKkeyQuery;
 import com.thaisoftplus.query.UserQuery;
 import com.thaisoftplus.query.Words17Query;
+import com.thaisoftplus.word.OriginalAlphabet;
 import com.thaisoftplus.word.OriginalWord;
-import com.thsisoftplus.domain.XlsRowAlphabet17;
+import com.thsisoftplus.domain.XlsRowWord;
 import com.thsisoftplus.domain.XlsRowGoverment;
 import com.thsisoftplus.domain.XlsRowItqxbmp;
 import com.thsisoftplus.entity.Alphabets17;
 import com.thsisoftplus.entity.CwAlphabets;
+import com.thsisoftplus.entity.FlAlphabets;
 import com.thsisoftplus.entity.User;
 import com.thsisoftplus.entity.UserKey;
 import com.thsisoftplus.entity.Words17;
 import com.thsisoftplus.string.StringMatcher;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
@@ -82,7 +84,7 @@ public class WordCheckerBusiness {
             for (UserKey userKey : userKeys) {
                 List<Alphabets17> alphabets17s = Alphabets17Query.getByKey(em, userKey.getId());
                 
-                List<Alphabets17> govers = StringMatcher.alphabets17sContains(goverList, alphabets17s);
+                List<Alphabets17> govers = (List<Alphabets17>) StringMatcher.originalAlphabetContains(goverList, alphabets17s);
                 XlsRowGoverment row = new XlsRowGoverment();
                 row.setEmail(userKey.getEmail());
                 row.setId(userKey.getId());
@@ -91,12 +93,12 @@ public class WordCheckerBusiness {
                 row.setGoverTime(getElapsedTime(govers.get(0).getKeyPress(), 
                         govers.get(govers.size() - 1).getKeyUp()));
                 
-                List<Alphabets17> ments = StringMatcher.alphabets17sContains(mentList, alphabets17s);
+                List<Alphabets17> ments = (List<Alphabets17>) StringMatcher.originalAlphabetContains(mentList, alphabets17s);
                 if(ments != null && ments.size() > 0)
                 row.setMentTime(getElapsedTime(ments.get(0).getKeyPress(), 
                         ments.get(ments.size() - 1).getKeyUp()));
                 
-                List<Alphabets17> itqxbmps = StringMatcher.alphabets17sContains(itqxbmpList, alphabets17s);
+                List<Alphabets17> itqxbmps = (List<Alphabets17>) StringMatcher.originalAlphabetContains(itqxbmpList, alphabets17s);
                 if(itqxbmps != null && itqxbmps.size() > 0)
                 row.setItqxbmpTime(getElapsedTime(itqxbmps.get(0).getKeyPress(), 
                         itqxbmps.get(itqxbmps.size() - 1).getKeyUp()));
@@ -152,6 +154,7 @@ public class WordCheckerBusiness {
                 row.setEmail(userKey.getEmail());
                 row.setId(userKey.getId());
                 row.setRound(round++);
+                
                 if(govers != null && govers.size() > 0)
                 row.setGoverTime(getElapsedTime(govers.get(0).getKeyPress(), 
                         govers.get(govers.size() - 1).getKeyUp()));
@@ -203,7 +206,7 @@ public class WordCheckerBusiness {
                 row.setId(userKey.getId());
                 row.setRound(round++);
                 
-                List<Alphabets17> itqxbmps = StringMatcher.alphabets17sContains(itqxbmpList, alphabets17s);
+                List<Alphabets17> itqxbmps = (List<Alphabets17>) StringMatcher.originalAlphabetContains(itqxbmpList, alphabets17s);
                 if(itqxbmps != null && itqxbmps.size() > 0){
                     row.setiTime(getElapsedTime(itqxbmps.get(0).getKeyPress(), itqxbmps.get(0).getKeyUp()));
                     row.settTime(getElapsedTime(itqxbmps.get(1).getKeyPress(), itqxbmps.get(1).getKeyUp()));
@@ -228,11 +231,11 @@ public class WordCheckerBusiness {
         return xlsRowItqxbmp;
     }
     
-    public List<XlsRowAlphabet17> listAllAlphabets17Word() throws Exception{
+    public List<XlsRowWord> listAllAlphabets17Word() throws Exception{
         int round;
         Class[] cArg = new Class[1];
         cArg[0] = long.class;
-        List<XlsRowAlphabet17> xlsRowAlphabet17 = new ArrayList<XlsRowAlphabet17>();
+        List<XlsRowWord> xlsRowAlphabet17 = new ArrayList<XlsRowWord>();
 
         // get all user
         List<User> users = UserQuery.getAll(em);
@@ -248,13 +251,13 @@ public class WordCheckerBusiness {
                 
                 List<Alphabets17> alphabets17s = Alphabets17Query.getByKey(em, userKey.getId());
                 
-                XlsRowAlphabet17 row = new XlsRowAlphabet17();
+                XlsRowWord row = new XlsRowWord();
                 row.setEmail(userKey.getEmail());
                 row.setId(userKey.getId());
                 row.setRound(round++);
                 
                 for (int i = 0; i < words17s.size() - 2; i++) {
-                    List<Alphabets17> words = StringMatcher.alphabets17sContains(convertToArrayList(words17s.get(i).getWording()), alphabets17s);
+                    List<Alphabets17> words = (List<Alphabets17>) StringMatcher.originalAlphabetContains(convertToArrayList(words17s.get(i).getWording()), alphabets17s);
                     if(words != null && words.size() > 0){
                         Method method = row.getClass().getMethod("setWord" + (i+1) + "Time", cArg);
                         method.invoke(row, getElapsedTime(words.get(0).getKeyPress(), words.get(words.size() - 1).getKeyUp()));
@@ -266,6 +269,53 @@ public class WordCheckerBusiness {
         }
         
         return xlsRowAlphabet17;
+    }
+    
+    public List<XlsRowWord> listAllFlAlphabetsWord() throws Exception{
+        int round;
+        Class[] cArg = new Class[1];
+        cArg[0] = long.class;
+        List<XlsRowWord> xlsRowFlAlphabets = new ArrayList<XlsRowWord>();
+
+        // get all user
+        List<User> users = UserQuery.getAll(em);
+        
+        List<String> fixLetters = new ArrayList<String>();
+        fixLetters.add("fjthb");
+        fixLetters.add("qpxlydv");
+        fixLetters.add("zkie");
+        fixLetters.add("wyodhlzbm");
+        fixLetters.add("oxb");
+        fixLetters.add("sdilj");
+        fixLetters.add("cukrybnq");
+        
+        for (User user : users) {
+            round = 1;
+            // keys of each user
+            List<UserKey> userKeys = UserKkeyQuery.getKeyByEmail(em, user.getEmail());
+            
+            for (UserKey userKey : userKeys) {
+                
+                List<FlAlphabets> flAlphabets = FlAlphabetsQuery.getByKey(em, userKey.getId());
+                
+                XlsRowWord row = new XlsRowWord();
+                row.setEmail(userKey.getEmail());
+                row.setId(userKey.getId());
+                row.setRound(round++);
+                
+                for (int i = 0; i < fixLetters.size(); i++) {
+                    List<FlAlphabets> words = (List<FlAlphabets>) StringMatcher.originalAlphabetContains(convertToArrayList(fixLetters.get(i)), flAlphabets);
+                    if(words != null && words.size() > 0){
+                        Method method = row.getClass().getMethod("setWord" + (i+1) + "Time", cArg);
+                        method.invoke(row, getElapsedTime(words.get(0).getKeyPress(), words.get(words.size() - 1).getKeyUp()));
+                    }
+                }
+                
+                xlsRowFlAlphabets.add(row);
+            }
+        }
+        
+        return xlsRowFlAlphabets;
     }
     
     private List<String> convertToArrayList(String word){

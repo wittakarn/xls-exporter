@@ -7,7 +7,7 @@ package com.thaisoftplus.main;
 
 import com.thaisoftplus.business.WordCheckerBusiness;
 import com.thaisoftplus.xls.exporter.XlsExport;
-import com.thsisoftplus.domain.XlsRowAlphabet17;
+import com.thsisoftplus.domain.XlsRowWord;
 import com.thsisoftplus.domain.XlsRowGoverment;
 import com.thsisoftplus.domain.XlsRowItqxbmp;
 import java.util.ArrayList;
@@ -57,20 +57,26 @@ public class Export {
 //        List<String> Matching = StringMatcher.getMatchString(original, compare);
         WordCheckerBusiness business = new WordCheckerBusiness();
         List<XlsRowGoverment> xlsRowGovermentAlphabets17 = business.listAllAlphabets17DataForGoverment();
-        XlsExport.createGoverment("D:/temp/Alphabets17GovermentItqxbmp.xlsx", "Elapsed time gover, ment and ipqxbmp", xlsRowGovermentAlphabets17);
+        XlsExport.createGoverment("D:/temp/Export-Alphabets17GovermentItqxbmp.xlsx", "Elapsed time gover, ment and ipqxbmp", xlsRowGovermentAlphabets17);
         
         List<XlsRowGoverment> xlsRowGovermentCwAlphabets = business.listAllCwAlphabetsDataForGoverment();
-        XlsExport.createGoverment("D:/temp/CwAlphabetsGovermentItqxbmp.xlsx", "Elapsed time gover, ment and ipqxbmp", xlsRowGovermentCwAlphabets);
+        XlsExport.createGoverment("D:/temp/Export-CwAlphabetsGovermentItqxbmp.xlsx", "Elapsed time gover, ment and ipqxbmp", xlsRowGovermentCwAlphabets);
         
         List<XlsRowItqxbmp> xlsRowItqxbmpAlphabets17 = business.listAllAlphabets17DataForItqxbmp();
-        XlsExport.createItqxbmp("D:/temp/Alphabets17Itqxbmp.xlsx", "Interval time ipqxbmp", xlsRowItqxbmpAlphabets17);
+        XlsExport.createItqxbmp("D:/temp/Export-Alphabets17Itqxbmp.xlsx", "Interval time ipqxbmp", xlsRowItqxbmpAlphabets17);
         
         try{
-            List<XlsRowAlphabet17> xlsRowAlphabet17 = business.listAllAlphabets17Word();
-            XlsExport.createAlphabets17("D:/temp/Alphabets17Word.xlsx", "Elapsed time of alphabets17", xlsRowAlphabet17);
+            List<XlsRowWord> xlsRowAlphabets17 = business.listAllAlphabets17Word();
+            XlsExport.createAlphabets17("D:/temp/Export-Alphabets17Word.xlsx", "Elapsed time of alphabets17", xlsRowAlphabets17);
         }catch(Exception ex){
             ex.printStackTrace();
         }
         
+        try{
+            List<XlsRowWord> xlsRowFlAlphabets = business.listAllFlAlphabetsWord();
+            XlsExport.createFlAlphabets("D:/temp/Export-FlAlphabetsWord.xlsx", "Elapsed time of fl_alphabets", xlsRowFlAlphabets);
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
     }
 }
