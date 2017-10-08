@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.thsisoftplus.string;
+package com.thaisoftplus.string;
 
 import com.thaisoftplus.word.OriginalAlphabet;
-import com.thsisoftplus.entity.Alphabets17;
-import com.thsisoftplus.entity.CwAlphabets;
+import com.thaisoftplus.entity.Alphabets17;
+import com.thaisoftplus.entity.CwAlphabets;
 import java.util.ArrayList;
 import java.util.List;
 

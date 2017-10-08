@@ -2,18 +2,18 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="CAPTCHA_THESIS_PU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>com.thsisoftplus.entity.User</class>
-    <class>com.thsisoftplus.entity.Words17</class>
-    <class>com.thsisoftplus.entity.UserKey</class>
-    <class>com.thsisoftplus.entity.ObAlphabets</class>
-    <class>com.thsisoftplus.entity.FlAlphabets</class>
-    <class>com.thsisoftplus.entity.Rd</class>
-    <class>com.thsisoftplus.entity.Alphabets17</class>
-    <class>com.thsisoftplus.entity.RdAlphabets</class>
-    <class>com.thsisoftplus.entity.Ob</class>
-    <class>com.thsisoftplus.entity.CwAlphabets</class>
-    <class>com.thsisoftplus.entity.UserInformation</class>
-    <class>com.thsisoftplus.entity.Cw</class>
+    <class>com.thaisoftplus.entity.RdAlphabets</class>
+    <class>com.thaisoftplus.entity.UserInformation</class>
+    <class>com.thaisoftplus.entity.UserKey</class>
+    <class>com.thaisoftplus.entity.Ob</class>
+    <class>com.thaisoftplus.entity.Words17</class>
+    <class>com.thaisoftplus.entity.CwAlphabets</class>
+    <class>com.thaisoftplus.entity.User</class>
+    <class>com.thaisoftplus.entity.Alphabets17</class>
+    <class>com.thaisoftplus.entity.FlAlphabets</class>
+    <class>com.thaisoftplus.entity.Rd</class>
+    <class>com.thaisoftplus.entity.ObAlphabets</class>
+    <class>com.thaisoftplus.entity.Cw</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/captcha_thesis?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.password" value="root"/>

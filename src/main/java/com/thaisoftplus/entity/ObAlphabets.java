@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.thsisoftplus.entity;
+package com.thaisoftplus.entity;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -23,24 +23,24 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author witta
  */
 @Entity
-@Table(name = "rd_alphabets")
+@Table(name = "ob_alphabets")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "RdAlphabets.findAll", query = "SELECT r FROM RdAlphabets r"),
-    @NamedQuery(name = "RdAlphabets.findById", query = "SELECT r FROM RdAlphabets r WHERE r.rdAlphabetsPK.id = :id"),
-    @NamedQuery(name = "RdAlphabets.findByCharIndex", query = "SELECT r FROM RdAlphabets r WHERE r.rdAlphabetsPK.charIndex = :charIndex"),
-    @NamedQuery(name = "RdAlphabets.findByAlphabet", query = "SELECT r FROM RdAlphabets r WHERE r.alphabet = :alphabet"),
-    @NamedQuery(name = "RdAlphabets.findByKeyCode", query = "SELECT r FROM RdAlphabets r WHERE r.keyCode = :keyCode"),
-    @NamedQuery(name = "RdAlphabets.findByKeyPress", query = "SELECT r FROM RdAlphabets r WHERE r.keyPress = :keyPress"),
-    @NamedQuery(name = "RdAlphabets.findByKeyDown", query = "SELECT r FROM RdAlphabets r WHERE r.keyDown = :keyDown"),
-    @NamedQuery(name = "RdAlphabets.findByKeyUp", query = "SELECT r FROM RdAlphabets r WHERE r.keyUp = :keyUp"),
-    @NamedQuery(name = "RdAlphabets.findByCorrect", query = "SELECT r FROM RdAlphabets r WHERE r.correct = :correct"),
-    @NamedQuery(name = "RdAlphabets.findByTimestamp", query = "SELECT r FROM RdAlphabets r WHERE r.timestamp = :timestamp")})
-public class RdAlphabets implements Serializable {
+    @NamedQuery(name = "ObAlphabets.findAll", query = "SELECT o FROM ObAlphabets o"),
+    @NamedQuery(name = "ObAlphabets.findById", query = "SELECT o FROM ObAlphabets o WHERE o.obAlphabetsPK.id = :id"),
+    @NamedQuery(name = "ObAlphabets.findByCharIndex", query = "SELECT o FROM ObAlphabets o WHERE o.obAlphabetsPK.charIndex = :charIndex"),
+    @NamedQuery(name = "ObAlphabets.findByAlphabet", query = "SELECT o FROM ObAlphabets o WHERE o.alphabet = :alphabet"),
+    @NamedQuery(name = "ObAlphabets.findByKeyCode", query = "SELECT o FROM ObAlphabets o WHERE o.keyCode = :keyCode"),
+    @NamedQuery(name = "ObAlphabets.findByKeyPress", query = "SELECT o FROM ObAlphabets o WHERE o.keyPress = :keyPress"),
+    @NamedQuery(name = "ObAlphabets.findByKeyDown", query = "SELECT o FROM ObAlphabets o WHERE o.keyDown = :keyDown"),
+    @NamedQuery(name = "ObAlphabets.findByKeyUp", query = "SELECT o FROM ObAlphabets o WHERE o.keyUp = :keyUp"),
+    @NamedQuery(name = "ObAlphabets.findByCorrect", query = "SELECT o FROM ObAlphabets o WHERE o.correct = :correct"),
+    @NamedQuery(name = "ObAlphabets.findByTimestamp", query = "SELECT o FROM ObAlphabets o WHERE o.timestamp = :timestamp")})
+public class ObAlphabets implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @EmbeddedId
-    protected RdAlphabetsPK rdAlphabetsPK;
+    protected ObAlphabetsPK obAlphabetsPK;
     @Basic(optional = false)
     @Column(name = "alphabet")
     private Character alphabet;
@@ -59,29 +59,29 @@ public class RdAlphabets implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date timestamp;
 
-    public RdAlphabets() {
+    public ObAlphabets() {
     }
 
-    public RdAlphabets(RdAlphabetsPK rdAlphabetsPK) {
-        this.rdAlphabetsPK = rdAlphabetsPK;
+    public ObAlphabets(ObAlphabetsPK obAlphabetsPK) {
+        this.obAlphabetsPK = obAlphabetsPK;
     }
 
-    public RdAlphabets(RdAlphabetsPK rdAlphabetsPK, Character alphabet, int keyCode) {
-        this.rdAlphabetsPK = rdAlphabetsPK;
+    public ObAlphabets(ObAlphabetsPK obAlphabetsPK, Character alphabet, int keyCode) {
+        this.obAlphabetsPK = obAlphabetsPK;
         this.alphabet = alphabet;
         this.keyCode = keyCode;
     }
 
-    public RdAlphabets(String id, int charIndex) {
-        this.rdAlphabetsPK = new RdAlphabetsPK(id, charIndex);
+    public ObAlphabets(String id, int charIndex) {
+        this.obAlphabetsPK = new ObAlphabetsPK(id, charIndex);
     }
 
-    public RdAlphabetsPK getRdAlphabetsPK() {
-        return rdAlphabetsPK;
+    public ObAlphabetsPK getObAlphabetsPK() {
+        return obAlphabetsPK;
     }
 
-    public void setRdAlphabetsPK(RdAlphabetsPK rdAlphabetsPK) {
-        this.rdAlphabetsPK = rdAlphabetsPK;
+    public void setObAlphabetsPK(ObAlphabetsPK obAlphabetsPK) {
+        this.obAlphabetsPK = obAlphabetsPK;
     }
 
     public Character getAlphabet() {
@@ -143,18 +143,18 @@ public class RdAlphabets implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (rdAlphabetsPK != null ? rdAlphabetsPK.hashCode() : 0);
+        hash += (obAlphabetsPK != null ? obAlphabetsPK.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof RdAlphabets)) {
+        if (!(object instanceof ObAlphabets)) {
             return false;
         }
-        RdAlphabets other = (RdAlphabets) object;
-        if ((this.rdAlphabetsPK == null && other.rdAlphabetsPK != null) || (this.rdAlphabetsPK != null && !this.rdAlphabetsPK.equals(other.rdAlphabetsPK))) {
+        ObAlphabets other = (ObAlphabets) object;
+        if ((this.obAlphabetsPK == null && other.obAlphabetsPK != null) || (this.obAlphabetsPK != null && !this.obAlphabetsPK.equals(other.obAlphabetsPK))) {
             return false;
         }
         return true;
@@ -162,7 +162,7 @@ public class RdAlphabets implements Serializable {
 
     @Override
     public String toString() {
-        return "com.thsisoftplus.entity.RdAlphabets[ rdAlphabetsPK=" + rdAlphabetsPK + " ]";
+        return "com.thsisoftplus.entity.ObAlphabets[ obAlphabetsPK=" + obAlphabetsPK + " ]";
     }
     
 }

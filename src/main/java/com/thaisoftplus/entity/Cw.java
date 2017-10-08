@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.thsisoftplus.entity;
+package com.thaisoftplus.entity;
 
-import com.thaisoftplus.word.OriginalWord;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -24,20 +23,20 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author witta
  */
 @Entity
-@Table(name = "words17")
+@Table(name = "cw")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Words17.findAll", query = "SELECT w FROM Words17 w"),
-    @NamedQuery(name = "Words17.findById", query = "SELECT w FROM Words17 w WHERE w.words17PK.id = :id"),
-    @NamedQuery(name = "Words17.findByWordIndex", query = "SELECT w FROM Words17 w WHERE w.words17PK.wordIndex = :wordIndex"),
-    @NamedQuery(name = "Words17.findByWording", query = "SELECT w FROM Words17 w WHERE w.wording = :wording"),
-    @NamedQuery(name = "Words17.findByCorrect", query = "SELECT w FROM Words17 w WHERE w.correct = :correct"),
-    @NamedQuery(name = "Words17.findByTimestamp", query = "SELECT w FROM Words17 w WHERE w.timestamp = :timestamp")})
-public class Words17 implements OriginalWord, Serializable {
+    @NamedQuery(name = "Cw.findAll", query = "SELECT c FROM Cw c"),
+    @NamedQuery(name = "Cw.findById", query = "SELECT c FROM Cw c WHERE c.cwPK.id = :id"),
+    @NamedQuery(name = "Cw.findByWordIndex", query = "SELECT c FROM Cw c WHERE c.cwPK.wordIndex = :wordIndex"),
+    @NamedQuery(name = "Cw.findByWording", query = "SELECT c FROM Cw c WHERE c.wording = :wording"),
+    @NamedQuery(name = "Cw.findByCorrect", query = "SELECT c FROM Cw c WHERE c.correct = :correct"),
+    @NamedQuery(name = "Cw.findByTimestamp", query = "SELECT c FROM Cw c WHERE c.timestamp = :timestamp")})
+public class Cw implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @EmbeddedId
-    protected Words17PK words17PK;
+    protected CwPK cwPK;
     @Basic(optional = false)
     @Column(name = "wording")
     private String wording;
@@ -47,28 +46,28 @@ public class Words17 implements OriginalWord, Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date timestamp;
 
-    public Words17() {
+    public Cw() {
     }
 
-    public Words17(Words17PK words17PK) {
-        this.words17PK = words17PK;
+    public Cw(CwPK cwPK) {
+        this.cwPK = cwPK;
     }
 
-    public Words17(Words17PK words17PK, String wording) {
-        this.words17PK = words17PK;
+    public Cw(CwPK cwPK, String wording) {
+        this.cwPK = cwPK;
         this.wording = wording;
     }
 
-    public Words17(String id, int wordIndex) {
-        this.words17PK = new Words17PK(id, wordIndex);
+    public Cw(String id, int wordIndex) {
+        this.cwPK = new CwPK(id, wordIndex);
     }
 
-    public Words17PK getWords17PK() {
-        return words17PK;
+    public CwPK getCwPK() {
+        return cwPK;
     }
 
-    public void setWords17PK(Words17PK words17PK) {
-        this.words17PK = words17PK;
+    public void setCwPK(CwPK cwPK) {
+        this.cwPK = cwPK;
     }
 
     public String getWording() {
@@ -98,18 +97,18 @@ public class Words17 implements OriginalWord, Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (words17PK != null ? words17PK.hashCode() : 0);
+        hash += (cwPK != null ? cwPK.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Words17)) {
+        if (!(object instanceof Cw)) {
             return false;
         }
-        Words17 other = (Words17) object;
-        if ((this.words17PK == null && other.words17PK != null) || (this.words17PK != null && !this.words17PK.equals(other.words17PK))) {
+        Cw other = (Cw) object;
+        if ((this.cwPK == null && other.cwPK != null) || (this.cwPK != null && !this.cwPK.equals(other.cwPK))) {
             return false;
         }
         return true;
@@ -117,7 +116,7 @@ public class Words17 implements OriginalWord, Serializable {
 
     @Override
     public String toString() {
-        return "com.thsisoftplus.entity.Words17[ words17PK=" + words17PK + " ]";
+        return "com.thsisoftplus.entity.Cw[ cwPK=" + cwPK + " ]";
     }
     
 }

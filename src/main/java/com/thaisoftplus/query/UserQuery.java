@@ -5,7 +5,7 @@
  */
 package com.thaisoftplus.query;
 
-import com.thsisoftplus.entity.User;
+import com.thaisoftplus.entity.User;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;

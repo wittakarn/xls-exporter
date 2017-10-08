@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.thsisoftplus.entity;
+package com.thaisoftplus.entity;
 
+import com.thaisoftplus.word.OriginalAlphabet;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -23,24 +24,24 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author witta
  */
 @Entity
-@Table(name = "ob_alphabets")
+@Table(name = "alphabets17")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "ObAlphabets.findAll", query = "SELECT o FROM ObAlphabets o"),
-    @NamedQuery(name = "ObAlphabets.findById", query = "SELECT o FROM ObAlphabets o WHERE o.obAlphabetsPK.id = :id"),
-    @NamedQuery(name = "ObAlphabets.findByCharIndex", query = "SELECT o FROM ObAlphabets o WHERE o.obAlphabetsPK.charIndex = :charIndex"),
-    @NamedQuery(name = "ObAlphabets.findByAlphabet", query = "SELECT o FROM ObAlphabets o WHERE o.alphabet = :alphabet"),
-    @NamedQuery(name = "ObAlphabets.findByKeyCode", query = "SELECT o FROM ObAlphabets o WHERE o.keyCode = :keyCode"),
-    @NamedQuery(name = "ObAlphabets.findByKeyPress", query = "SELECT o FROM ObAlphabets o WHERE o.keyPress = :keyPress"),
-    @NamedQuery(name = "ObAlphabets.findByKeyDown", query = "SELECT o FROM ObAlphabets o WHERE o.keyDown = :keyDown"),
-    @NamedQuery(name = "ObAlphabets.findByKeyUp", query = "SELECT o FROM ObAlphabets o WHERE o.keyUp = :keyUp"),
-    @NamedQuery(name = "ObAlphabets.findByCorrect", query = "SELECT o FROM ObAlphabets o WHERE o.correct = :correct"),
-    @NamedQuery(name = "ObAlphabets.findByTimestamp", query = "SELECT o FROM ObAlphabets o WHERE o.timestamp = :timestamp")})
-public class ObAlphabets implements Serializable {
+    @NamedQuery(name = "Alphabets17.findAll", query = "SELECT a FROM Alphabets17 a"),
+    @NamedQuery(name = "Alphabets17.findById", query = "SELECT a FROM Alphabets17 a WHERE a.alphabets17PK.id = :id"),
+    @NamedQuery(name = "Alphabets17.findByCharIndex", query = "SELECT a FROM Alphabets17 a WHERE a.alphabets17PK.charIndex = :charIndex"),
+    @NamedQuery(name = "Alphabets17.findByAlphabet", query = "SELECT a FROM Alphabets17 a WHERE a.alphabet = :alphabet"),
+    @NamedQuery(name = "Alphabets17.findByKeyCode", query = "SELECT a FROM Alphabets17 a WHERE a.keyCode = :keyCode"),
+    @NamedQuery(name = "Alphabets17.findByKeyPress", query = "SELECT a FROM Alphabets17 a WHERE a.keyPress = :keyPress"),
+    @NamedQuery(name = "Alphabets17.findByKeyDown", query = "SELECT a FROM Alphabets17 a WHERE a.keyDown = :keyDown"),
+    @NamedQuery(name = "Alphabets17.findByKeyUp", query = "SELECT a FROM Alphabets17 a WHERE a.keyUp = :keyUp"),
+    @NamedQuery(name = "Alphabets17.findByCorrect", query = "SELECT a FROM Alphabets17 a WHERE a.correct = :correct"),
+    @NamedQuery(name = "Alphabets17.findByTimestamp", query = "SELECT a FROM Alphabets17 a WHERE a.timestamp = :timestamp")})
+public class Alphabets17 implements OriginalAlphabet, Serializable {
 
     private static final long serialVersionUID = 1L;
     @EmbeddedId
-    protected ObAlphabetsPK obAlphabetsPK;
+    protected Alphabets17PK alphabets17PK;
     @Basic(optional = false)
     @Column(name = "alphabet")
     private Character alphabet;
@@ -59,29 +60,29 @@ public class ObAlphabets implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date timestamp;
 
-    public ObAlphabets() {
+    public Alphabets17() {
     }
 
-    public ObAlphabets(ObAlphabetsPK obAlphabetsPK) {
-        this.obAlphabetsPK = obAlphabetsPK;
+    public Alphabets17(Alphabets17PK alphabets17PK) {
+        this.alphabets17PK = alphabets17PK;
     }
 
-    public ObAlphabets(ObAlphabetsPK obAlphabetsPK, Character alphabet, int keyCode) {
-        this.obAlphabetsPK = obAlphabetsPK;
+    public Alphabets17(Alphabets17PK alphabets17PK, Character alphabet, int keyCode) {
+        this.alphabets17PK = alphabets17PK;
         this.alphabet = alphabet;
         this.keyCode = keyCode;
     }
 
-    public ObAlphabets(String id, int charIndex) {
-        this.obAlphabetsPK = new ObAlphabetsPK(id, charIndex);
+    public Alphabets17(String id, int charIndex) {
+        this.alphabets17PK = new Alphabets17PK(id, charIndex);
     }
 
-    public ObAlphabetsPK getObAlphabetsPK() {
-        return obAlphabetsPK;
+    public Alphabets17PK getAlphabets17PK() {
+        return alphabets17PK;
     }
 
-    public void setObAlphabetsPK(ObAlphabetsPK obAlphabetsPK) {
-        this.obAlphabetsPK = obAlphabetsPK;
+    public void setAlphabets17PK(Alphabets17PK alphabets17PK) {
+        this.alphabets17PK = alphabets17PK;
     }
 
     public Character getAlphabet() {
@@ -143,18 +144,18 @@ public class ObAlphabets implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (obAlphabetsPK != null ? obAlphabetsPK.hashCode() : 0);
+        hash += (alphabets17PK != null ? alphabets17PK.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof ObAlphabets)) {
+        if (!(object instanceof Alphabets17)) {
             return false;
         }
-        ObAlphabets other = (ObAlphabets) object;
-        if ((this.obAlphabetsPK == null && other.obAlphabetsPK != null) || (this.obAlphabetsPK != null && !this.obAlphabetsPK.equals(other.obAlphabetsPK))) {
+        Alphabets17 other = (Alphabets17) object;
+        if ((this.alphabets17PK == null && other.alphabets17PK != null) || (this.alphabets17PK != null && !this.alphabets17PK.equals(other.alphabets17PK))) {
             return false;
         }
         return true;
@@ -162,7 +163,7 @@ public class ObAlphabets implements Serializable {
 
     @Override
     public String toString() {
-        return "com.thsisoftplus.entity.ObAlphabets[ obAlphabetsPK=" + obAlphabetsPK + " ]";
+        return "com.thsisoftplus.entity.Alphabets17[ alphabets17PK=" + alphabets17PK + " ]";
     }
     
 }

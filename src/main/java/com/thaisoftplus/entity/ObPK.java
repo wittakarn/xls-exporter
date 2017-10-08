@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.thsisoftplus.entity;
+package com.thaisoftplus.entity;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
@@ -15,7 +15,7 @@ import javax.persistence.Embeddable;
  * @author witta
  */
 @Embeddable
-public class Words17PK implements Serializable {
+public class ObPK implements Serializable {
 
     @Basic(optional = false)
     @Column(name = "id")
@@ -24,10 +24,10 @@ public class Words17PK implements Serializable {
     @Column(name = "word_index")
     private int wordIndex;
 
-    public Words17PK() {
+    public ObPK() {
     }
 
-    public Words17PK(String id, int wordIndex) {
+    public ObPK(String id, int wordIndex) {
         this.id = id;
         this.wordIndex = wordIndex;
     }
@@ -59,10 +59,10 @@ public class Words17PK implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Words17PK)) {
+        if (!(object instanceof ObPK)) {
             return false;
         }
-        Words17PK other = (Words17PK) object;
+        ObPK other = (ObPK) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -74,7 +74,7 @@ public class Words17PK implements Serializable {
 
     @Override
     public String toString() {
-        return "com.thsisoftplus.entity.Words17PK[ id=" + id + ", wordIndex=" + wordIndex + " ]";
+        return "com.thsisoftplus.entity.ObPK[ id=" + id + ", wordIndex=" + wordIndex + " ]";
     }
     
 }

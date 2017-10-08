@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.thsisoftplus.entity;
+package com.thaisoftplus.entity;
 
 import com.thaisoftplus.word.OriginalAlphabet;
 import java.io.Serializable;
@@ -24,24 +24,24 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author witta
  */
 @Entity
-@Table(name = "alphabets17")
+@Table(name = "fl_alphabets")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Alphabets17.findAll", query = "SELECT a FROM Alphabets17 a"),
-    @NamedQuery(name = "Alphabets17.findById", query = "SELECT a FROM Alphabets17 a WHERE a.alphabets17PK.id = :id"),
-    @NamedQuery(name = "Alphabets17.findByCharIndex", query = "SELECT a FROM Alphabets17 a WHERE a.alphabets17PK.charIndex = :charIndex"),
-    @NamedQuery(name = "Alphabets17.findByAlphabet", query = "SELECT a FROM Alphabets17 a WHERE a.alphabet = :alphabet"),
-    @NamedQuery(name = "Alphabets17.findByKeyCode", query = "SELECT a FROM Alphabets17 a WHERE a.keyCode = :keyCode"),
-    @NamedQuery(name = "Alphabets17.findByKeyPress", query = "SELECT a FROM Alphabets17 a WHERE a.keyPress = :keyPress"),
-    @NamedQuery(name = "Alphabets17.findByKeyDown", query = "SELECT a FROM Alphabets17 a WHERE a.keyDown = :keyDown"),
-    @NamedQuery(name = "Alphabets17.findByKeyUp", query = "SELECT a FROM Alphabets17 a WHERE a.keyUp = :keyUp"),
-    @NamedQuery(name = "Alphabets17.findByCorrect", query = "SELECT a FROM Alphabets17 a WHERE a.correct = :correct"),
-    @NamedQuery(name = "Alphabets17.findByTimestamp", query = "SELECT a FROM Alphabets17 a WHERE a.timestamp = :timestamp")})
-public class Alphabets17 implements OriginalAlphabet, Serializable {
+    @NamedQuery(name = "FlAlphabets.findAll", query = "SELECT f FROM FlAlphabets f"),
+    @NamedQuery(name = "FlAlphabets.findById", query = "SELECT f FROM FlAlphabets f WHERE f.flAlphabetsPK.id = :id"),
+    @NamedQuery(name = "FlAlphabets.findByCharIndex", query = "SELECT f FROM FlAlphabets f WHERE f.flAlphabetsPK.charIndex = :charIndex"),
+    @NamedQuery(name = "FlAlphabets.findByAlphabet", query = "SELECT f FROM FlAlphabets f WHERE f.alphabet = :alphabet"),
+    @NamedQuery(name = "FlAlphabets.findByKeyCode", query = "SELECT f FROM FlAlphabets f WHERE f.keyCode = :keyCode"),
+    @NamedQuery(name = "FlAlphabets.findByKeyPress", query = "SELECT f FROM FlAlphabets f WHERE f.keyPress = :keyPress"),
+    @NamedQuery(name = "FlAlphabets.findByKeyDown", query = "SELECT f FROM FlAlphabets f WHERE f.keyDown = :keyDown"),
+    @NamedQuery(name = "FlAlphabets.findByKeyUp", query = "SELECT f FROM FlAlphabets f WHERE f.keyUp = :keyUp"),
+    @NamedQuery(name = "FlAlphabets.findByCorrect", query = "SELECT f FROM FlAlphabets f WHERE f.correct = :correct"),
+    @NamedQuery(name = "FlAlphabets.findByTimestamp", query = "SELECT f FROM FlAlphabets f WHERE f.timestamp = :timestamp")})
+public class FlAlphabets implements OriginalAlphabet, Serializable {
 
     private static final long serialVersionUID = 1L;
     @EmbeddedId
-    protected Alphabets17PK alphabets17PK;
+    protected FlAlphabetsPK flAlphabetsPK;
     @Basic(optional = false)
     @Column(name = "alphabet")
     private Character alphabet;
@@ -60,29 +60,29 @@ public class Alphabets17 implements OriginalAlphabet, Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date timestamp;
 
-    public Alphabets17() {
+    public FlAlphabets() {
     }
 
-    public Alphabets17(Alphabets17PK alphabets17PK) {
-        this.alphabets17PK = alphabets17PK;
+    public FlAlphabets(FlAlphabetsPK flAlphabetsPK) {
+        this.flAlphabetsPK = flAlphabetsPK;
     }
 
-    public Alphabets17(Alphabets17PK alphabets17PK, Character alphabet, int keyCode) {
-        this.alphabets17PK = alphabets17PK;
+    public FlAlphabets(FlAlphabetsPK flAlphabetsPK, Character alphabet, int keyCode) {
+        this.flAlphabetsPK = flAlphabetsPK;
         this.alphabet = alphabet;
         this.keyCode = keyCode;
     }
 
-    public Alphabets17(String id, int charIndex) {
-        this.alphabets17PK = new Alphabets17PK(id, charIndex);
+    public FlAlphabets(String id, int charIndex) {
+        this.flAlphabetsPK = new FlAlphabetsPK(id, charIndex);
     }
 
-    public Alphabets17PK getAlphabets17PK() {
-        return alphabets17PK;
+    public FlAlphabetsPK getFlAlphabetsPK() {
+        return flAlphabetsPK;
     }
 
-    public void setAlphabets17PK(Alphabets17PK alphabets17PK) {
-        this.alphabets17PK = alphabets17PK;
+    public void setFlAlphabetsPK(FlAlphabetsPK flAlphabetsPK) {
+        this.flAlphabetsPK = flAlphabetsPK;
     }
 
     public Character getAlphabet() {
@@ -144,18 +144,18 @@ public class Alphabets17 implements OriginalAlphabet, Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (alphabets17PK != null ? alphabets17PK.hashCode() : 0);
+        hash += (flAlphabetsPK != null ? flAlphabetsPK.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Alphabets17)) {
+        if (!(object instanceof FlAlphabets)) {
             return false;
         }
-        Alphabets17 other = (Alphabets17) object;
-        if ((this.alphabets17PK == null && other.alphabets17PK != null) || (this.alphabets17PK != null && !this.alphabets17PK.equals(other.alphabets17PK))) {
+        FlAlphabets other = (FlAlphabets) object;
+        if ((this.flAlphabetsPK == null && other.flAlphabetsPK != null) || (this.flAlphabetsPK != null && !this.flAlphabetsPK.equals(other.flAlphabetsPK))) {
             return false;
         }
         return true;
@@ -163,7 +163,7 @@ public class Alphabets17 implements OriginalAlphabet, Serializable {
 
     @Override
     public String toString() {
-        return "com.thsisoftplus.entity.Alphabets17[ alphabets17PK=" + alphabets17PK + " ]";
+        return "com.thsisoftplus.entity.FlAlphabets[ flAlphabetsPK=" + flAlphabetsPK + " ]";
     }
     
 }

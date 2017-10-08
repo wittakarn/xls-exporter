@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.thsisoftplus.entity;
+package com.thaisoftplus.entity;
 
-import com.thaisoftplus.word.OriginalAlphabet;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -24,24 +23,24 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author witta
  */
 @Entity
-@Table(name = "fl_alphabets")
+@Table(name = "rd_alphabets")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "FlAlphabets.findAll", query = "SELECT f FROM FlAlphabets f"),
-    @NamedQuery(name = "FlAlphabets.findById", query = "SELECT f FROM FlAlphabets f WHERE f.flAlphabetsPK.id = :id"),
-    @NamedQuery(name = "FlAlphabets.findByCharIndex", query = "SELECT f FROM FlAlphabets f WHERE f.flAlphabetsPK.charIndex = :charIndex"),
-    @NamedQuery(name = "FlAlphabets.findByAlphabet", query = "SELECT f FROM FlAlphabets f WHERE f.alphabet = :alphabet"),
-    @NamedQuery(name = "FlAlphabets.findByKeyCode", query = "SELECT f FROM FlAlphabets f WHERE f.keyCode = :keyCode"),
-    @NamedQuery(name = "FlAlphabets.findByKeyPress", query = "SELECT f FROM FlAlphabets f WHERE f.keyPress = :keyPress"),
-    @NamedQuery(name = "FlAlphabets.findByKeyDown", query = "SELECT f FROM FlAlphabets f WHERE f.keyDown = :keyDown"),
-    @NamedQuery(name = "FlAlphabets.findByKeyUp", query = "SELECT f FROM FlAlphabets f WHERE f.keyUp = :keyUp"),
-    @NamedQuery(name = "FlAlphabets.findByCorrect", query = "SELECT f FROM FlAlphabets f WHERE f.correct = :correct"),
-    @NamedQuery(name = "FlAlphabets.findByTimestamp", query = "SELECT f FROM FlAlphabets f WHERE f.timestamp = :timestamp")})
-public class FlAlphabets implements OriginalAlphabet, Serializable {
+    @NamedQuery(name = "RdAlphabets.findAll", query = "SELECT r FROM RdAlphabets r"),
+    @NamedQuery(name = "RdAlphabets.findById", query = "SELECT r FROM RdAlphabets r WHERE r.rdAlphabetsPK.id = :id"),
+    @NamedQuery(name = "RdAlphabets.findByCharIndex", query = "SELECT r FROM RdAlphabets r WHERE r.rdAlphabetsPK.charIndex = :charIndex"),
+    @NamedQuery(name = "RdAlphabets.findByAlphabet", query = "SELECT r FROM RdAlphabets r WHERE r.alphabet = :alphabet"),
+    @NamedQuery(name = "RdAlphabets.findByKeyCode", query = "SELECT r FROM RdAlphabets r WHERE r.keyCode = :keyCode"),
+    @NamedQuery(name = "RdAlphabets.findByKeyPress", query = "SELECT r FROM RdAlphabets r WHERE r.keyPress = :keyPress"),
+    @NamedQuery(name = "RdAlphabets.findByKeyDown", query = "SELECT r FROM RdAlphabets r WHERE r.keyDown = :keyDown"),
+    @NamedQuery(name = "RdAlphabets.findByKeyUp", query = "SELECT r FROM RdAlphabets r WHERE r.keyUp = :keyUp"),
+    @NamedQuery(name = "RdAlphabets.findByCorrect", query = "SELECT r FROM RdAlphabets r WHERE r.correct = :correct"),
+    @NamedQuery(name = "RdAlphabets.findByTimestamp", query = "SELECT r FROM RdAlphabets r WHERE r.timestamp = :timestamp")})
+public class RdAlphabets implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @EmbeddedId
-    protected FlAlphabetsPK flAlphabetsPK;
+    protected RdAlphabetsPK rdAlphabetsPK;
     @Basic(optional = false)
     @Column(name = "alphabet")
     private Character alphabet;
@@ -60,29 +59,29 @@ public class FlAlphabets implements OriginalAlphabet, Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date timestamp;
 
-    public FlAlphabets() {
+    public RdAlphabets() {
     }
 
-    public FlAlphabets(FlAlphabetsPK flAlphabetsPK) {
-        this.flAlphabetsPK = flAlphabetsPK;
+    public RdAlphabets(RdAlphabetsPK rdAlphabetsPK) {
+        this.rdAlphabetsPK = rdAlphabetsPK;
     }
 
-    public FlAlphabets(FlAlphabetsPK flAlphabetsPK, Character alphabet, int keyCode) {
-        this.flAlphabetsPK = flAlphabetsPK;
+    public RdAlphabets(RdAlphabetsPK rdAlphabetsPK, Character alphabet, int keyCode) {
+        this.rdAlphabetsPK = rdAlphabetsPK;
         this.alphabet = alphabet;
         this.keyCode = keyCode;
     }
 
-    public FlAlphabets(String id, int charIndex) {
-        this.flAlphabetsPK = new FlAlphabetsPK(id, charIndex);
+    public RdAlphabets(String id, int charIndex) {
+        this.rdAlphabetsPK = new RdAlphabetsPK(id, charIndex);
     }
 
-    public FlAlphabetsPK getFlAlphabetsPK() {
-        return flAlphabetsPK;
+    public RdAlphabetsPK getRdAlphabetsPK() {
+        return rdAlphabetsPK;
     }
 
-    public void setFlAlphabetsPK(FlAlphabetsPK flAlphabetsPK) {
-        this.flAlphabetsPK = flAlphabetsPK;
+    public void setRdAlphabetsPK(RdAlphabetsPK rdAlphabetsPK) {
+        this.rdAlphabetsPK = rdAlphabetsPK;
     }
 
     public Character getAlphabet() {
@@ -144,18 +143,18 @@ public class FlAlphabets implements OriginalAlphabet, Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (flAlphabetsPK != null ? flAlphabetsPK.hashCode() : 0);
+        hash += (rdAlphabetsPK != null ? rdAlphabetsPK.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof FlAlphabets)) {
+        if (!(object instanceof RdAlphabets)) {
             return false;
         }
-        FlAlphabets other = (FlAlphabets) object;
-        if ((this.flAlphabetsPK == null && other.flAlphabetsPK != null) || (this.flAlphabetsPK != null && !this.flAlphabetsPK.equals(other.flAlphabetsPK))) {
+        RdAlphabets other = (RdAlphabets) object;
+        if ((this.rdAlphabetsPK == null && other.rdAlphabetsPK != null) || (this.rdAlphabetsPK != null && !this.rdAlphabetsPK.equals(other.rdAlphabetsPK))) {
             return false;
         }
         return true;
@@ -163,7 +162,7 @@ public class FlAlphabets implements OriginalAlphabet, Serializable {
 
     @Override
     public String toString() {
-        return "com.thsisoftplus.entity.FlAlphabets[ flAlphabetsPK=" + flAlphabetsPK + " ]";
+        return "com.thsisoftplus.entity.RdAlphabets[ rdAlphabetsPK=" + rdAlphabetsPK + " ]";
     }
     
 }

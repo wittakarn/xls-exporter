@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.thsisoftplus.entity;
+package com.thaisoftplus.entity;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -23,20 +23,20 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author witta
  */
 @Entity
-@Table(name = "cw")
+@Table(name = "ob")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Cw.findAll", query = "SELECT c FROM Cw c"),
-    @NamedQuery(name = "Cw.findById", query = "SELECT c FROM Cw c WHERE c.cwPK.id = :id"),
-    @NamedQuery(name = "Cw.findByWordIndex", query = "SELECT c FROM Cw c WHERE c.cwPK.wordIndex = :wordIndex"),
-    @NamedQuery(name = "Cw.findByWording", query = "SELECT c FROM Cw c WHERE c.wording = :wording"),
-    @NamedQuery(name = "Cw.findByCorrect", query = "SELECT c FROM Cw c WHERE c.correct = :correct"),
-    @NamedQuery(name = "Cw.findByTimestamp", query = "SELECT c FROM Cw c WHERE c.timestamp = :timestamp")})
-public class Cw implements Serializable {
+    @NamedQuery(name = "Ob.findAll", query = "SELECT o FROM Ob o"),
+    @NamedQuery(name = "Ob.findById", query = "SELECT o FROM Ob o WHERE o.obPK.id = :id"),
+    @NamedQuery(name = "Ob.findByWordIndex", query = "SELECT o FROM Ob o WHERE o.obPK.wordIndex = :wordIndex"),
+    @NamedQuery(name = "Ob.findByWording", query = "SELECT o FROM Ob o WHERE o.wording = :wording"),
+    @NamedQuery(name = "Ob.findByCorrect", query = "SELECT o FROM Ob o WHERE o.correct = :correct"),
+    @NamedQuery(name = "Ob.findByTimestamp", query = "SELECT o FROM Ob o WHERE o.timestamp = :timestamp")})
+public class Ob implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @EmbeddedId
-    protected CwPK cwPK;
+    protected ObPK obPK;
     @Basic(optional = false)
     @Column(name = "wording")
     private String wording;
@@ -46,28 +46,28 @@ public class Cw implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date timestamp;
 
-    public Cw() {
+    public Ob() {
     }
 
-    public Cw(CwPK cwPK) {
-        this.cwPK = cwPK;
+    public Ob(ObPK obPK) {
+        this.obPK = obPK;
     }
 
-    public Cw(CwPK cwPK, String wording) {
-        this.cwPK = cwPK;
+    public Ob(ObPK obPK, String wording) {
+        this.obPK = obPK;
         this.wording = wording;
     }
 
-    public Cw(String id, int wordIndex) {
-        this.cwPK = new CwPK(id, wordIndex);
+    public Ob(String id, int wordIndex) {
+        this.obPK = new ObPK(id, wordIndex);
     }
 
-    public CwPK getCwPK() {
-        return cwPK;
+    public ObPK getObPK() {
+        return obPK;
     }
 
-    public void setCwPK(CwPK cwPK) {
-        this.cwPK = cwPK;
+    public void setObPK(ObPK obPK) {
+        this.obPK = obPK;
     }
 
     public String getWording() {
@@ -97,18 +97,18 @@ public class Cw implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (cwPK != null ? cwPK.hashCode() : 0);
+        hash += (obPK != null ? obPK.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Cw)) {
+        if (!(object instanceof Ob)) {
             return false;
         }
-        Cw other = (Cw) object;
-        if ((this.cwPK == null && other.cwPK != null) || (this.cwPK != null && !this.cwPK.equals(other.cwPK))) {
+        Ob other = (Ob) object;
+        if ((this.obPK == null && other.obPK != null) || (this.obPK != null && !this.obPK.equals(other.obPK))) {
             return false;
         }
         return true;
@@ -116,7 +116,7 @@ public class Cw implements Serializable {
 
     @Override
     public String toString() {
-        return "com.thsisoftplus.entity.Cw[ cwPK=" + cwPK + " ]";
+        return "com.thsisoftplus.entity.Ob[ obPK=" + obPK + " ]";
     }
     
 }

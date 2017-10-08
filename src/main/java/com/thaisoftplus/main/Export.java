@@ -7,9 +7,9 @@ package com.thaisoftplus.main;
 
 import com.thaisoftplus.business.WordCheckerBusiness;
 import com.thaisoftplus.xls.exporter.XlsExport;
-import com.thsisoftplus.domain.XlsRowWord;
-import com.thsisoftplus.domain.XlsRowGoverment;
-import com.thsisoftplus.domain.XlsRowItqxbmp;
+import com.thaisoftplus.domain.XlsRowWord;
+import com.thaisoftplus.domain.XlsRowGoverment;
+import com.thaisoftplus.domain.XlsRowItqxbmp;
 import java.util.ArrayList;
 import java.util.List;
 

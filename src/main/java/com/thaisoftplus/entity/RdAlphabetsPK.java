@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.thsisoftplus.entity;
+package com.thaisoftplus.entity;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
@@ -15,21 +15,21 @@ import javax.persistence.Embeddable;
  * @author witta
  */
 @Embeddable
-public class ObPK implements Serializable {
+public class RdAlphabetsPK implements Serializable {
 
     @Basic(optional = false)
     @Column(name = "id")
     private String id;
     @Basic(optional = false)
-    @Column(name = "word_index")
-    private int wordIndex;
+    @Column(name = "char_index")
+    private int charIndex;
 
-    public ObPK() {
+    public RdAlphabetsPK() {
     }
 
-    public ObPK(String id, int wordIndex) {
+    public RdAlphabetsPK(String id, int charIndex) {
         this.id = id;
-        this.wordIndex = wordIndex;
+        this.charIndex = charIndex;
     }
 
     public String getId() {
@@ -40,33 +40,33 @@ public class ObPK implements Serializable {
         this.id = id;
     }
 
-    public int getWordIndex() {
-        return wordIndex;
+    public int getCharIndex() {
+        return charIndex;
     }
 
-    public void setWordIndex(int wordIndex) {
-        this.wordIndex = wordIndex;
+    public void setCharIndex(int charIndex) {
+        this.charIndex = charIndex;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);
-        hash += (int) wordIndex;
+        hash += (int) charIndex;
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof ObPK)) {
+        if (!(object instanceof RdAlphabetsPK)) {
             return false;
         }
-        ObPK other = (ObPK) object;
+        RdAlphabetsPK other = (RdAlphabetsPK) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
-        if (this.wordIndex != other.wordIndex) {
+        if (this.charIndex != other.charIndex) {
             return false;
         }
         return true;
@@ -74,7 +74,7 @@ public class ObPK implements Serializable {
 
     @Override
     public String toString() {
-        return "com.thsisoftplus.entity.ObPK[ id=" + id + ", wordIndex=" + wordIndex + " ]";
+        return "com.thsisoftplus.entity.RdAlphabetsPK[ id=" + id + ", charIndex=" + charIndex + " ]";
     }
     
 }
