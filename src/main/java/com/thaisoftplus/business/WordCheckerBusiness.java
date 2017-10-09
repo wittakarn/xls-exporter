@@ -149,7 +149,7 @@ public class WordCheckerBusiness {
             for (UserKey userKey : userKeys) {
                 List<CwAlphabets> cwAlphabets = CwAlphabetsQuery.getByKey(em, userKey.getId());
                 
-                List<CwAlphabets> govers = StringMatcher.cwAplhabetsContains(goverList, cwAlphabets);
+                List<CwAlphabets> govers = (List<CwAlphabets>) StringMatcher.originalAlphabetContains(goverList, cwAlphabets);
                 XlsRowGoverment row = new XlsRowGoverment();
                 row.setEmail(userKey.getEmail());
                 row.setId(userKey.getId());
@@ -159,12 +159,12 @@ public class WordCheckerBusiness {
                 row.setGoverTime(getElapsedTime(govers.get(0).getKeyPress(), 
                         govers.get(govers.size() - 1).getKeyUp()));
                 
-                List<CwAlphabets> ments = StringMatcher.cwAplhabetsContains(mentList, cwAlphabets);
+                List<CwAlphabets> ments = (List<CwAlphabets>) StringMatcher.originalAlphabetContains(mentList, cwAlphabets);
                 if(ments != null && ments.size() > 0)
                 row.setMentTime(getElapsedTime(ments.get(0).getKeyPress(), 
                         ments.get(ments.size() - 1).getKeyUp()));
                 
-                List<CwAlphabets> itqxbmps = StringMatcher.cwAplhabetsContains(itqxbmpList, cwAlphabets);
+                List<CwAlphabets> itqxbmps = (List<CwAlphabets>) StringMatcher.originalAlphabetContains(itqxbmpList, cwAlphabets);
                 if(itqxbmps != null && itqxbmps.size() > 0)
                 row.setItqxbmpTime(getElapsedTime(itqxbmps.get(0).getKeyPress(), 
                         itqxbmps.get(itqxbmps.size() - 1).getKeyUp()));
