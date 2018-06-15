@@ -5,6 +5,7 @@
  */
 package com.thaisoftplus.xls.exporter;
 
+import com.thaisoftplus.domain.XlsRowAlphabet17;
 import com.thaisoftplus.domain.XlsRowWord;
 import com.thaisoftplus.domain.XlsRowGoverment;
 import com.thaisoftplus.domain.XlsRowItqxbmp;
@@ -301,6 +302,76 @@ public class XlsExport {
             
             cell = row.createCell(colNum++);
             cell.setCellValue(data.getWord7Time());
+        }
+
+        try {
+            FileOutputStream outputStream = new FileOutputStream(fileName);
+            workbook.write(outputStream);
+            workbook.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("Done");
+    }
+    
+    public static void createAlphabets17Detail(String fileName, String sheetName, List<XlsRowAlphabet17> datas){
+        XSSFWorkbook workbook = new XSSFWorkbook();
+        XSSFSheet sheet = workbook.createSheet(sheetName);
+        
+        int rowNum = 0;
+        System.out.println("Creating excel");
+
+        for (XlsRowAlphabet17 data : datas) {
+            Row row = sheet.createRow(rowNum++);
+            int colNum = 0;
+            
+            Cell cell = row.createCell(colNum++);
+            cell.setCellValue(data.getRound());
+            
+            cell = row.createCell(colNum++);
+            cell.setCellValue(data.getEmail());
+            
+            cell = row.createCell(colNum++);
+            cell.setCellValue(data.getId());
+            
+            cell = row.createCell(colNum++);
+            cell.setCellValue(data.getCharIndex());
+            
+            cell = row.createCell(colNum++);
+            cell.setCellValue(data.getInputAlphabet());
+            
+            cell = row.createCell(colNum++);
+            cell.setCellValue(data.getShowAlphabet());
+            
+            cell = row.createCell(colNum++);
+            cell.setCellValue(data.getKeyCode());
+            
+            cell = row.createCell(colNum++);
+            cell.setCellValue(data.getKeyPress());
+            
+            cell = row.createCell(colNum++);
+            cell.setCellValue(data.getKeyDown());
+            
+            cell = row.createCell(colNum++);
+            cell.setCellValue(data.getKeyUp());
+            
+            cell = row.createCell(colNum++);
+            cell.setCellValue(data.getWord());
+            
+            cell = row.createCell(colNum++);
+            cell.setCellValue(data.getCorrectWord());
+            
+            cell = row.createCell(colNum++);
+            cell.setCellValue(data.getCorrectAlphabet());
+            
+            cell = row.createCell(colNum++);
+            cell.setCellValue(data.getOpacity() != null ? data.getOpacity().toString() : null);
+            
+            cell = row.createCell(colNum++);
+            cell.setCellValue(data.getTimestamp().toString());
         }
 
         try {

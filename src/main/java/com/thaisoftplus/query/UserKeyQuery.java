@@ -14,7 +14,7 @@ import javax.persistence.Query;
  *
  * @author witta
  */
-public class UserKkeyQuery {
+public class UserKeyQuery {
     public static List<UserKey> getKeyByEmail(EntityManager em, String email) {
 //        return em.createNamedQuery("UserKey.findByEmail")
 //                            .setParameter("email", email)
